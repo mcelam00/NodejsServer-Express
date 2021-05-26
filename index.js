@@ -1,11 +1,11 @@
 //activamos el modulo que utiliza en el fondo el http de nodejs
 const express = require('express');
 
-
-
 //vamos a ejecutar express, que nos retorna el servidor
 const servidor = express(); 
 
+//CONFIGURACIONES:
+servidor.set('puertoServidor', 5000);
 
 
 /*MIDDLEWARE: Aquí irían las funciones y llamadas correspondientes que se ejecutan antes de las particulares que dan respuesta según el metodo y ruta
@@ -136,6 +136,6 @@ servidor.use(express.static('public'));
 
 
 //Ponemos en marcha a escuchar el server
-servidor.listen(5000, () => {
-    console.log('Servidor escuchando en el puerto 5000');
+servidor.listen(servidor.get('puertoServidor'), () => {
+    console.log('Servidor escuchando en el puerto ' + servidor.get('puertoServidor'));
 });
