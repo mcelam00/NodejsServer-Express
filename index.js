@@ -10,7 +10,21 @@ servidor.get('/', (request, response) =>{
     response.send('Hola Mundo, primer intento de Nodejs con Express :)');
 });
 
-//Ponemos en marcha a escuchar el server
-servidor.listen(3000, () => {
-    console.log('Servidor escuchando en el puerto 3000');
+
+/*Enrutamiento: creación de subdirectorios en el servidor. Siempre antes de poner en marcha el server con .listen()*/
+
+servidor.get('/about', (request, response) =>{
+    response.send('Informacion sobre el servidor');
 });
+
+servidor.get('/test', (request, response) =>{
+    response.send('<h1>TEST</h1>');
+});
+
+
+//Ponemos en marcha a escuchar el server
+servidor.listen(5000, () => {
+    console.log('Servidor escuchando en el puerto 5000');
+});
+
+
