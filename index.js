@@ -21,6 +21,21 @@ servidor.get('/test', (request, response) =>{
     response.send('<h1>TEST</h1>');
 });
 
+/*Métodos HTTP: POST PUT DELETE*/
+
+servidor.post('/', (request, response) =>{
+    response.send('Se ha recibido una petición POST');
+});
+
+servidor.put('/', (request, response) =>{
+    response.send('Se ha recibido una petición PUT');
+});
+
+servidor.delete('/', (request, response) =>{
+    response.send('Se ha recibido una petición DELETE');
+});
+
+
 
 //Ponemos en marcha a escuchar el server
 servidor.listen(5000, () => {
