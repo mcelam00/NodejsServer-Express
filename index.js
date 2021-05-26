@@ -49,10 +49,10 @@ servidor.all('/', (request, response, next) =>{
 
 
 //listener de peticiones get. Cuando se reciba una al directorio raíz hacemos lo que indica la funcion
-servidor.get('/', (request, response) =>{
+//servidor.get('/', (request, response) =>{
     //respondo con un mensaje de vuelta
-    response.send('Hola Mundo, primer intento de Nodejs con Express :)');
-});
+    //response.send('Hola Mundo, primer intento de Nodejs con Express :)');
+//});
 
 
 /*Enrutamiento: creación de subdirectorios en el servidor. Siempre antes de poner en marcha el server con .listen()*/
@@ -122,10 +122,20 @@ servidor.delete('/', (request, response) =>{
 
 
 
+/*MIDDLEWARE 2: Vamos a hacer uso de un middleware definido dentro del propio framework express
+        1. Crearemos una carpeta de nombre public por ejemplo
+        2. Al middleware express.static le pasamos el nombre de la carpeta
+        3. Creamos dentro de la carpeta un index.html que contendrá una página HTML 5
+        4. Ésta será la página raíz de mi servidor, porque después de pasar los enrutamientos no coincide con ninguno y va a retornar el index.html
+        5. Si estuviera enlazado con un css o js que estaría todo dentro de public (es la parte publica de nuestro servidor, públicamente accesible)
+*/
+
+servidor.use(express.static('public'));
+
+
+
 
 //Ponemos en marcha a escuchar el server
 servidor.listen(5000, () => {
     console.log('Servidor escuchando en el puerto 5000');
 });
-
-
